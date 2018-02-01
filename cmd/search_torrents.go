@@ -6,7 +6,7 @@ import (
 	"os"
 	"text/tabwriter"
 
-	"github.com/idealhack/go-torrentapi"
+	"github.com/magunetto/go-torrentapi"
 )
 
 // flags

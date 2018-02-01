@@ -249,6 +249,10 @@ func (api *API) processResponse(apiResponse *APIResponse) (data TorrentResults, 
 		if apiResponse.ErrorCode == 10 {
 			return
 		}
+		// No TMDb id found
+		if apiResponse.ErrorCode == 14 {
+			return
+		}
 		// No torrents found
 		if apiResponse.ErrorCode == 20 {
 			return

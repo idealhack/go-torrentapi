@@ -25,6 +25,9 @@ const (
 // for testing purposes
 var apiurl = URL
 
+// app_id parameter
+var app_id string
+
 // Token keeps token and it's expiration date.
 type Token struct {
 	Token   string    `json:"token"`
@@ -274,6 +277,7 @@ func (api *API) initQuery() {
 
 // RenewToken fetches new token.
 func RenewToken() (token Token, err error) {
+	apiurl += fmt.Sprintf("app_id=%s&", app_id)
 	resp, err := http.Get(apiurl + "get_token=get_token")
 	if err != nil {
 		return
@@ -291,7 +295,8 @@ func RenewToken() (token Token, err error) {
 var renewToken = RenewToken
 
 // Init Initializes API object, fetches new token and returns API instance.
-func Init() (*API, error) {
+func Init(app string) (*API, error) {
+	app_id = app
 	token, err := renewToken()
 	if err != nil {
 		return nil, err

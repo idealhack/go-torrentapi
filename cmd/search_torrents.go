@@ -39,7 +39,7 @@ func main() {
 		flag.PrintDefaults()
 		return
 	}
-	api, err := torrentapi.Init()
+	api, err := torrentapi.Init("test")
 	if err != nil {
 		fmt.Printf("Error while querying torrentapi %s", err)
 		return
